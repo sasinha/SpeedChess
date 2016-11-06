@@ -1,18 +1,27 @@
 package sinhasanchit.speedchess;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.widget.TextView;
+/**
+ * Created by sanchit on 11/6/16.
+ */
+
 import java.util.Timer;
+import java.util.TimerTask;
 
-public class ChessTimer extends AppCompatActivity {
+public class ChessTimer {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    public int setTime;
+    Timer moveTimer = new Timer();
 
+    TimerTask showTime = new TimerTask() {
+        @Override
+        public void run() {
+            setTime--;
+            System.out.println(setTime);
+        }
+    };
 
+    public void start() {
+        moveTimer.scheduleAtFixedRate(showTime,1000,setTime);
 
     }
 }
